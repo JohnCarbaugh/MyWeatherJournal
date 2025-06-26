@@ -17,7 +17,10 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy =>
     {
         policy
-            .WithOrigins("http://localhost:5173")  // the vue app
+            .WithOrigins(
+                "http://localhost:5173",    // dev
+                "http://localhost:3000"     // production
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

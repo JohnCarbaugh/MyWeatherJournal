@@ -4,18 +4,8 @@
 
         <!-- Left Column-->
         <div class="col-12 col-lg-9 justify-content-around">
-            <!-- TODO: City Weather Overview Here-->
-             <div class="py-2">
-                <div id="city-weather-card" class="card flex-grow-1 bg-white shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">City Weather</h5>
-                        <h6 class="card-subtitle text-muted">City</h6>
-                        <p class="card-text py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <a href="#" class="card-link">link here</a>
-                    </div>
-                </div>
-             </div>
 
+            <CityWeatherCard :wr="cityWeather" />
     
             <!-- TODO: Hourly Forecast Here -->
             <div class="py-2">
@@ -46,14 +36,17 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+
+import CityWeatherCard from '../components/CityWeatherCard.vue'
+import { createDefaultWeatherResult, type WeatherResultDto } from '../models/WeatherResultDto'
 
 const route = useRoute();
 const city = ref('');
 const state = ref('');
-const cityWeather = ref(null);
+const cityWeather = ref<WeatherResultDto>(createDefaultWeatherResult());
 
 const baseUrl = import.meta.env.VITE_CURRENT_WEATHER_API_BASE_URL;
 
@@ -65,7 +58,7 @@ async function getCityByGeoLocation() {
 
 // TODO: Implement GeoLocation API
 async function getStateByGeoLocation() {
-    return 'OK'; // todo
+    return 'oklahoma'; // todo
 }
 
 onMounted(async () => {
@@ -79,8 +72,8 @@ async function initializeCity() {
     // We need the city at minimum for the API. If state is not specified, that's fine
     if (route.query.city)
     {
-        city.value = route.query.city;
-        state.value = route.query.state || '';
+        city.value = route.query.city as string;
+        state.value = route.query.state as string || '';
     }
     else
     {
