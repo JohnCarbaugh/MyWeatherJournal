@@ -1,5 +1,12 @@
 // variable overrides for bootstrap theme
-
 $body-bg: #f5f7fa;
 $body-color: #2c3e50;
 $primary: #3A4264;
+
+// Custom Variables
+:root {
+    --lg-header-height: 65px;
+    --mobile-nav-height: 60px;
+    --sidebar-nav-width-: 225px;
+    --body-bg: #f5f7fa;
+}
