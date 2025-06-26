@@ -47,6 +47,77 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute();
+const city = ref('');
+const state = ref('');
+const cityWeather = ref(null);
+
+const baseUrl = import.meta.env.VITE_CURRENT_WEATHER_API_BASE_URL;
+
+
+// TODO: Implement GeoLocation API
+async function getCityByGeoLocation() {
+    return 'Jenks'; // todo
+}
+
+// TODO: Implement GeoLocation API
+async function getStateByGeoLocation() {
+    return 'OK'; // todo
+}
+
+onMounted(async () => {
+    // The functionality depends on the city being set, so await both to ensure nothing executes out of order
+    await initializeCity();
+    await fetchCityWeather();
+})
+
+async function initializeCity() {
+
+    // We need the city at minimum for the API. If state is not specified, that's fine
+    if (route.query.city)
+    {
+        city.value = route.query.city;
+        state.value = route.query.state || '';
+    }
+    else
+    {
+        city.value = await getCityByGeoLocation();
+        state.value = await getStateByGeoLocation();
+    }
+}
+
+async function fetchCityWeather() {
+
+    if (!city.value) return;
+
+    const url = new URL(baseUrl);
+    url.searchParams.append('city', city.value);
+
+    if (state.value) {
+        url.searchParams.append('state', state.value);
+    }
+
+    try
+    {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        cityWeather.value = await response.json();
+    }
+    catch(err) 
+    {
+        console.error('API error:', err);
+    }
+
+}
+
+
 </script>
 
 <style scope>

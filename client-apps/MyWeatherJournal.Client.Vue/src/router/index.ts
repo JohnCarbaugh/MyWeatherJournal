@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Dashboard from '../views/Dashboard.vue'
+import Weather from '../views/Weather.vue'
 import Journal from '../views/Journal.vue'
 import Community from '../views/Community.vue'
 
 const routes = [
-  { path: '/', redirect: '/dashboard' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/', redirect: '/weather' },
+  { path: '/weather', name: 'Weather', component: Weather },
   { path: '/journal', name: 'Journal', component: Journal },
   { path: '/community', name: 'Community', component: Community }
 ]

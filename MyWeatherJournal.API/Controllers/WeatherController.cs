@@ -4,7 +4,7 @@ using MyWeatherJournal.API.Services;
 namespace MyWeatherJournal.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/weather")]
     public class WeatherController : ControllerBase
     {
         private readonly WeatherService _weatherService;
@@ -17,7 +17,7 @@ namespace MyWeatherJournal.API.Controllers
         // Remember: The controller route (Weather) is applied here
         // baseUrl/weather?city=...
         [HttpGet]
-        public async Task<IActionResult> GetWeatherByCity([FromQuery] string city)
+        public async Task<IActionResult> GetWeatherByCity([FromQuery] string city, string? state)
         {
             // Validations
             if (string.IsNullOrWhiteSpace(city))
