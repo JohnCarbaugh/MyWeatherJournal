@@ -1,6 +1,6 @@
-﻿namespace MyWeatherJournal.API.Models
+﻿namespace MyWeatherJournal.API.Dtos
 {
-    public class GeoLocation
+    public class GeoLocationDto
     {
         /// <summary>
         /// City Name
@@ -9,6 +9,6 @@
         public float Lat { get; set; }
         public float Lon { get; set; }
         public string Country { get; set; }
-        public string State { get; set; }
+        public string? State { get; set; }
     }
 }

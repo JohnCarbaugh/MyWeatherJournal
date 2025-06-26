@@ -26,7 +26,7 @@ namespace MyWeatherJournal.API.Controllers
             }
 
             // Call the service to get the weather data
-            var result = await _weatherService.GetWeatherByCityAsync(city);
+            var result = await _weatherService.GetWeatherByCityAsync(city, state);
 
             // Handle error response
             if (!result.Success)

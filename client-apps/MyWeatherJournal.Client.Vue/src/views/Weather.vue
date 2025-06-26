@@ -69,7 +69,7 @@ async function getStateByGeoLocation() {
 }
 
 onMounted(async () => {
-    // The functionality depends on the city being set, so await both to ensure nothing executes out of order
+    // The functionality depends on the city being set, so await both to ensure everything executes in order
     await initializeCity();
     await fetchCityWeather();
 })
@@ -116,7 +116,6 @@ async function fetchCityWeather() {
     }
 
 }
-
 
 </script>
 
