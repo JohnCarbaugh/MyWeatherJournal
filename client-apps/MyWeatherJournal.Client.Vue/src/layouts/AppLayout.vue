@@ -14,9 +14,9 @@
 
             <!-- Sidebar Nav -->
             <nav class="nav flex-column">
-                <RouterLink to="/dashboard" class="nav-link text-light py-2" active-class="active" aria-label="Go to Dashboard">
+                <RouterLink to="/weather" class="nav-link text-light py-2" active-class="active" aria-label="Go to Weather">
                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="me-2"/>
-                    <div>Dashboard</div>
+                    <div>Weather</div>
                 </RouterLink>
                 <RouterLink to="/journal" class="nav-link text-light py-2" active-class="active" aria-label="Go to Journal ">
                     <font-awesome-icon :icon="['fas', 'book']" class="me-2"/>
@@ -60,9 +60,9 @@
             <!-- Mobile Navigation -->
             <nav id="mobile-nav" class="d-md-none navbar fixed-bottom bg-primary text-light border-top shadow-sm p-0">
                 <div class="container-fluid d-flex justify-content-around p-0 h-100">
-                    <RouterLink to="/dashboard" class="nav-link text-center p-0 h-100 flex-third" active-class="active" aria-label="Dashboard">
+                    <RouterLink to="/weather" class="nav-link text-center p-0 h-100 flex-third" active-class="active" aria-label="Weather">
                         <font-awesome-icon class="pt-2" :icon="['fas', 'tachometer-alt']" />
-                        <div class="small">Dashboard</div>
+                        <div class="small">Weather</div>
                     </RouterLink>
                     <RouterLink to="/journal" class="nav-link text-center p-0 h-100 flex-third" active-class="active" aria-label="Journal">
                         <font-awesome-icon class="pt-2" :icon="['fas', 'book']" />
