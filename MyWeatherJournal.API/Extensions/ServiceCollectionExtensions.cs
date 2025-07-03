@@ -1,4 +1,5 @@
 ﻿using MyWeatherJournal.API.Services;
+using MyWeatherJournal.API.Repositories;
 
 namespace MyWeatherJournal.API.Extensions
 {
@@ -7,7 +8,10 @@ namespace MyWeatherJournal.API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddHttpClient<WeatherService>();
-            // Add more services here as needed...
+            services.AddScoped<CityService>();
+            services.AddScoped<ICityRepository, CityRepository>();
+            // Add more services and repositories as needed...
+
             return services;
         }
     }
